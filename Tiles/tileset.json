@@ -1,0 +1,145 @@
+{ "columns":32,
+ "image":"D:\/DAU\/ExampleProject\/src\/Sprites\/tiles.png",
+ "imageheight":256,
+ "imagewidth":256,
+ "margin":0,
+ "name":"tiles",
+ "spacing":0,
+ "tilecount":1024,
+ "tiledversion":"1.10.2",
+ "tileheight":8,
+ "tilewidth":8,
+ "type":"tileset",
+ "version":"1.10",
+ "wangsets":[
+        {
+         "colors":[
+                {
+                 "color":"#ff0000",
+                 "name":"",
+                 "probability":1,
+                 "tile":-1
+                }],
+         "name":"1",
+         "tile":33,
+         "type":"corner",
+         "wangtiles":[
+                {
+                 "tileid":0,
+                 "wangid":[0, 0, 0, 1, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":1,
+                 "wangid":[0, 0, 0, 1, 0, 1, 0, 0]
+                }, 
+                {
+                 "tileid":2,
+                 "wangid":[0, 0, 0, 0, 0, 1, 0, 0]
+                }, 
+                {
+                 "tileid":32,
+                 "wangid":[0, 1, 0, 1, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":33,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":34,
+                 "wangid":[0, 0, 0, 0, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":64,
+                 "wangid":[0, 1, 0, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":65,
+                 "wangid":[0, 1, 0, 0, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":66,
+                 "wangid":[0, 0, 0, 0, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":128,
+                 "wangid":[0, 1, 0, 0, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":129,
+                 "wangid":[0, 1, 0, 1, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":160,
+                 "wangid":[0, 0, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":161,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 0]
+                }]
+        }, 
+        {
+         "colors":[
+                {
+                 "color":"#ff0000",
+                 "name":"",
+                 "probability":1,
+                 "tile":5
+                }],
+         "name":"2",
+         "tile":5,
+         "type":"corner",
+         "wangtiles":[
+                {
+                 "tileid":0,
+                 "wangid":[0, 1, 0, 0, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":1,
+                 "wangid":[0, 1, 0, 0, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":2,
+                 "wangid":[0, 1, 0, 1, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":6,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":32,
+                 "wangid":[0, 0, 0, 0, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":34,
+                 "wangid":[0, 1, 0, 1, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":64,
+                 "wangid":[0, 0, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":65,
+                 "wangid":[0, 0, 0, 1, 0, 1, 0, 0]
+                }, 
+                {
+                 "tileid":66,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 0]
+                }, 
+                {
+                 "tileid":128,
+                 "wangid":[0, 0, 0, 1, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":129,
+                 "wangid":[0, 0, 0, 0, 0, 1, 0, 0]
+                }, 
+                {
+                 "tileid":160,
+                 "wangid":[0, 1, 0, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":161,
+                 "wangid":[0, 0, 0, 0, 0, 0, 0, 1]
+                }]
+        }]
+}
