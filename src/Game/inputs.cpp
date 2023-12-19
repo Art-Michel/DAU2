@@ -1,6 +1,6 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "inputs.h"
-#include "app/app.h"
+//#include "App/app.h"
 #include "math.h"
 
 Inputs::Inputs()

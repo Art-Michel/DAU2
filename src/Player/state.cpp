@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "state.h"
 
 void state::init(int name, Player* plpt)

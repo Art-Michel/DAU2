@@ -1,5 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <string>
+#include "Entity.h"
+#include "player.h"
+#include "EntitiesManager.h"
 
 int main()
 {
@@ -22,9 +26,9 @@ int main()
 }
 /*
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <string>
-#include "app\app.h"
+//#include "App\app.h"
 #include "entity.h"
 #include "player.h"
 #include "EntitiesManager.h"

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "core.h"
 
 float dot(const vec2& a, const vec2& b)

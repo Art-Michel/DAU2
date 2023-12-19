@@ -1,7 +1,7 @@
 // DAU.cpp
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <string>
-#include "app\app.h"
+//#include "App\app.h"
 #include "entity.h"
 #include "player.h"
 #include "EntitiesManager.h"

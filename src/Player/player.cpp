@@ -1,6 +1,6 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <string>
-#include "app\app.h"
+//#include "App\app.h"
 #include "player.h"
 #include <algorithm>
 #include "EntitiesManager.h"
@@ -33,7 +33,7 @@ void Player::draw()
 {
 	Entity::draw();
 
-	//Print la velocité
+	//Print la velocitï¿½
 	App::Print(100, 100, ("Vel X= " + std::to_string(velocity_.x)).c_str());
 	App::Print(100, 80, ("Vel Y= " + std::to_string(velocity_.y)).c_str());
 
@@ -46,7 +46,7 @@ void Player::draw()
 	}
 	#pragma endregion
 
-	#pragma region 	//Print les entités par ordre de distance au joueur
+	#pragma region 	//Print les entitï¿½s par ordre de distance au joueur
 	//{
 	//	std::vector<Entity*> e = EntitiesManager::GetInstance()->entities;
 	//	App::Print(10, 400, (std::to_string((int)e[0]->Pos.x) + " | " + std::to_string((int)e[1]->Pos.x) + " | " + std::to_string((int)e[2]->Pos.x) + " | " + std::to_string((int)e[3]->Pos.x)).c_str());

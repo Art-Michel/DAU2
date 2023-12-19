@@ -1,7 +1,7 @@
-﻿#include "stdafx.h"
+﻿//#include "stdafx.h"
 #include "entity.h"
 #include "EntitiesManager.h"
-#include "App/app.h"
+//#include "App/app.h"
 
 //Entity::Entity() :
 //	sprite_()
