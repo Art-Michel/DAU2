@@ -10,7 +10,7 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-include_directories(src/Entities src/Player src/Game)
+include_directories(src/Entities src/Player src/Game ${Windows_SDK_INCLUDE_DIR}/ucrt)
 
 add_executable(CMakeSFMLProject src/main.cpp)
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)

@@ -1,6 +1,6 @@
 #pragma once
 //#include "stdafx.h"
-#include <corecrt_math.h>
+// #include "core.h"
 #include <cmath>
 
 struct vec2

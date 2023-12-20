@@ -9,7 +9,7 @@ class EntitiesManager
 public:
 	static inline EntitiesManager* instance = nullptr;
 	std::vector<Entity*> entities;
-	static EntitiesManager* EntitiesManager::GetInstance();
+	static EntitiesManager* GetInstance();
 	void Update(float delta);
 	void Draw();
 };
