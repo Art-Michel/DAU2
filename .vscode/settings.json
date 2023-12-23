@@ -4,6 +4,8 @@
         "cmath": "cpp",
         "vector": "cpp",
         "memory": "cpp",
-        "string": "cpp"
-    }
+        "string": "cpp",
+        "atomic": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }
