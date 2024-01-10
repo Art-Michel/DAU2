@@ -12,7 +12,11 @@ FetchContent_MakeAvailable(SFML)
 
 include_directories(src/Entities src/Player src/Game ${Windows_SDK_INCLUDE_DIR}/ucrt)
 
-add_executable(CMakeSFMLProject src/main.cpp)
+# add_executable(CMakeSFMLProject src/main.cpp src/Entities/Entity.h)
+file(GLOB_RECURSE sources      src/*.cpp src/*.h)
+add_executable(CMakeSFMLProject ${sources})
+# add_executable(CMakeSFMLProject src/main.cpp)
+
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)
 
