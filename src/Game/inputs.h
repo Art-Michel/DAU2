@@ -1,5 +1,5 @@
 #pragma once
-//#include "stdafx.h"
+#include <SFML/Graphics.hpp>
 #include "core.h"
 
 class Inputs
@@ -12,4 +12,3 @@ public:
 	void register_inputs();
 	vec2 get_inputs();
 };
-

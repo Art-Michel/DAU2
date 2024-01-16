@@ -1,28 +1,27 @@
-//#include "stdafx.h"
 #include "inputs.h"
-//#include "App/app.h"
 #include "math.h"
 
-Inputs::Inputs()
-= default;
+Inputs::Inputs() = default;
 
 void Inputs::register_inputs()
 {
-	inputs_.x = App::GetController().GetLeftThumbStickX();
-	//if (inputs_.x > -0.3f && inputs_.x < 0.3f)
+	// inputs_.x = App::GetController().GetLeftThumbStickX();
+	inputs_.x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+	// if (inputs_.x > -0.3f && inputs_.x < 0.3f)
 	//	inputs_.x = 0.0f;
 
-	inputs_.y = App::GetController().GetLeftThumbStickY();
-	//if (inputs_.y > -0.3f && inputs_.y < 0.3f)
+	// inputs_.y = App::GetController().GetLeftThumbStickY();
+	inputs_.y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+	// if (inputs_.y > -0.3f && inputs_.y < 0.3f)
 	//	inputs_.y = 0.0f;
 
-	if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_LEFT, false))
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovX) == -1)
 		inputs_.x -= 1;
-	if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_RIGHT, false))
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovX) == 1)
 		inputs_.x += 1;
-	if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_DOWN, false))
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovY) == -1)
 		inputs_.y -= 1;
-	if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_UP, false))
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovY) == 1)
 		inputs_.y += 1;
 }
 
