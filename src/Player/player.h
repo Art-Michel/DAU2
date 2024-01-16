@@ -1,9 +1,10 @@
 #pragma once
-//#include "stdafx.h"
+// #include "stdafx.h"
 #include "core.h"
 #include "inputs.h"
 #include "entity.h"
 #include "FSM.h"
+#include <SFML/Graphics.hpp>
 
 class Player : public Entity
 {
@@ -16,14 +17,13 @@ private:
 	FSM fsm;
 
 public:
-	void init(const vec2& pos, const char* path) override;
+	void init(const vec2 &pos, const char *path) override;
 	void update(float delta) override;
 	void draw() override;
 
-
 private:
 	void check_collisions();
-	bool collided_with(const Entity& entity);
-	void resolve_collision(const Entity& entity);
+	bool collided_with(const Entity &entity);
+	void resolve_collision(const Entity &entity);
 	void AddGravity(float delta);
 };

@@ -20,10 +20,10 @@ public:
 	vec2 Pos;
 	vec2 Colbox = {32, 32};
 	float Dist_to_player() const;
+	sf::Sprite sprite_;
 
 protected:
 	vec2 velocity_;
-	sf::Sprite sprite_;
 	sf::Texture texture_;
 	// CSimpleSprite* sprite_;
 	// std::unique_ptr<CSimpleSprite> sprite_;

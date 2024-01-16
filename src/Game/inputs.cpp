@@ -15,13 +15,13 @@ void Inputs::register_inputs()
 	// if (inputs_.y > -0.3f && inputs_.y < 0.3f)
 	//	inputs_.y = 0.0f;
 
-	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovX) == -1)
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovX) < -0.8)
 		inputs_.x -= 1;
-	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovX) == 1)
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovX) > 0.8)
 		inputs_.x += 1;
-	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovY) == -1)
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovY) < -0.8)
 		inputs_.y -= 1;
-	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovY) == 1)
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovY) > 0.8)
 		inputs_.y += 1;
 }
 

@@ -31,26 +31,9 @@
 #include "EntitiesManager.h"
 
 sf::RenderWindow window;
-
-int main()
-{
-	auto window = sf::RenderWindow{{1280u, 720u}, "wahoo"};
-	window.setFramerateLimit(30);
-
-	while (window.isOpen())
-	{
-		for (auto event = sf::Event{}; window.pollEvent(event);)
-		{
-			if (event.type == sf::Event::Closed)
-			{
-				window.close();
-			}
-		}
-		window.clear();
-		window.display();
-		std::cout << "Mario!\n";
-	}
-}
+std::vector<sf::Text> texts;
+std::vector<sf::Sprite> sprites;
+sf::Clock deltaClock;
 
 Entity entity;
 Entity entity2;
@@ -64,13 +47,13 @@ void Init()
 	entity3 = Entity();
 	// player = Player();
 
-	player.init(vec2(500, 400), ".\\Sprites\\char.png");
+	player.init(vec2(100, 200), "D:\\Cooding\\cmake-sfml-project\\Sprites\\char.png");
 	auto *ent = static_cast<Entity *>(&player);
 	EntitiesManager::GetInstance()->entities.push_back(ent);
 
-	entity.init(vec2(500, 32), ".\\Sprites\\Square.png");
-	entity2.init(vec2(564, 32), ".\\Sprites\\Square.png");
-	entity3.init(vec2(628, 32), ".\\Sprites\\Square.png");
+	entity.init(vec2(500, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
+	entity2.init(vec2(100, 100), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
+	entity3.init(vec2(628, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
 	EntitiesManager::GetInstance()->entities.push_back(&entity);
 	EntitiesManager::GetInstance()->entities.push_back(&entity2);
 	EntitiesManager::GetInstance()->entities.push_back(&entity3);
@@ -79,6 +62,50 @@ void Init()
 void Update(float deltaTime)
 {
 	EntitiesManager::GetInstance()->Update(deltaTime);
+}
+
+int main()
+{
+	auto window = sf::RenderWindow{{1280u, 720u}, "wahoo", sf::Style::Close | sf::Style::Titlebar};
+	window.setFramerateLimit(30);
+	Init();
+
+	sf::Font silver;
+	silver.loadFromFile("D:\\Cooding\\cmake-sfml-project\\fonts\\Silver.ttf");
+	silver.setSmooth(false);
+	sf::Text text;
+
+	text.setCharacterSize(36);
+	text.setFont(silver);
+	text.setString("Ouah!!");
+	text.setPosition(200.0f, 200.0f);
+	while (window.isOpen())
+	{
+		for (auto event = sf::Event{}; window.pollEvent(event);)
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				window.close();
+			}
+		}
+
+		Update(deltaClock.restart().asSeconds());
+
+		window.clear();
+		window.draw(text);
+
+		// sf::CircleShape shape(100.f);
+		// shape.setFillColor(sf::Color::Green);
+		// window.draw(shape);
+
+		for (int i = 0; i < EntitiesManager::GetInstance()->entities.size(); i++)
+		{
+			window.draw(EntitiesManager::GetInstance()->entities[i]->sprite_);
+		}
+
+		window.display();
+		// std::cout << "Mario!\n";
+	}
 }
 
 void Render()

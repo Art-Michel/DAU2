@@ -17,8 +17,8 @@ void Player::init(const vec2 &pos, const char *path)
 
 	Colbox = {28, 32};
 
-	sf::Font silver;
-	silver.loadFromFile("src/fonts/silver.ttf");
+	// sf::Font silver;
+	// silver.loadFromFile("src/fonts/silver.ttf");
 }
 
 void Player::update(float delta)
@@ -40,6 +40,7 @@ void Player::draw()
 	sf::String text(("Vel X= " + std::to_string(velocity_.x)).c_str());
 	// App::Print(100, 80, ("Vel Y= " + std::to_string(velocity_.y)).c_str());
 	sf::String text2(("Vel Y= " + std::to_string(velocity_.y)).c_str());
+	// text2.Move()
 
 #pragma region // Print si on collisionne DEPRECATED, NE PRINTERA JAMAIS TRUE
 	{
