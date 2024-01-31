@@ -18,7 +18,7 @@ public:
 
 public:
 	vec2 Pos;
-	vec2 Colbox = {32, 32};
+	vec2 Colbox = {16.0, 16.0};
 	float Dist_to_player() const;
 	sf::Sprite sprite_;
 

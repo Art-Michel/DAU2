@@ -20,6 +20,10 @@ void Entity::init(const vec2 &pos, const char *path)
 
 void Entity::update(const float delta)
 {
+	// Round Velocity to a precision of .001
+	velocity_.x = roundf(velocity_.x * 100) * 0.01f;
+	velocity_.y = roundf(velocity_.y * 100) * 0.01f;
+
 	Pos = Pos + velocity_ * delta * speed_;
 	sprite_.setPosition(Pos.x, Pos.y);
 	// texture_->SetPosition(Pos.x, Pos.y);

@@ -4,6 +4,8 @@
 #include "player.h"
 #include <algorithm>
 #include "EntitiesManager.h"
+#include "../imgui-sfml-2.6/imgui-1.90.1/imgui.h"
+#include "../imgui-sfml-2.6/imgui-SFML.h"
 
 Player::Player() : fsm(*this)
 {
@@ -13,7 +15,7 @@ void Player::init(const vec2 &pos, const char *path)
 {
 	inputs = Inputs();
 	Entity::init(pos, path);
-	speed_ = 0.3f;
+	speed_ = 300.0f;
 
 	Colbox = {28, 32};
 
@@ -28,19 +30,19 @@ void Player::update(float delta)
 
 	colliding = false;
 	check_collisions();
+
 	Entity::update(delta);
+	ImGui::Begin("Player");
+	std::string s = "velocity.x = " + std::to_string(velocity_.x);
+	ImGui::Text(s.c_str());
+	std::string s2 = "velocity.y = " + std::to_string(velocity_.y);
+	ImGui::Text(s2.c_str());
+	ImGui::End();
 }
 
 void Player::draw()
 {
 	Entity::draw();
-
-	// Print la velocit�
-	// App::Print(100, 100, ("Vel X= " + std::to_string(velocity_.x)).c_str());
-	sf::String text(("Vel X= " + std::to_string(velocity_.x)).c_str());
-	// App::Print(100, 80, ("Vel Y= " + std::to_string(velocity_.y)).c_str());
-	sf::String text2(("Vel Y= " + std::to_string(velocity_.y)).c_str());
-	// text2.Move()
 
 #pragma region // Print si on collisionne DEPRECATED, NE PRINTERA JAMAIS TRUE
 	{

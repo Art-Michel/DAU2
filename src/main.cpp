@@ -1,34 +1,11 @@
-// #include <SFML/Graphics.hpp>
-
-// int main()
-// {
-// 	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-// 	sf::CircleShape shape(100.f);
-// 	shape.setFillColor(sf::Color::Green);
-
-// 	while (window.isOpen())
-// 	{
-// 		sf::Event event;
-// 		while (window.pollEvent(event))
-// 		{
-// 			if (event.type == sf::Event::Closed)
-// 				window.close();
-// 		}
-
-// 		window.clear();
-// 		window.draw(shape);
-// 		window.display();
-// 	}
-
-// 	return 0;
-// }
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
 #include "Entity.h"
 #include "player.h"
 #include "EntitiesManager.h"
+#include "../imgui-sfml-2.6/imgui-1.90.1/imgui.h"
+#include "../imgui-sfml-2.6/imgui-SFML.h"
 
 sf::RenderWindow window;
 std::vector<sf::Text> texts;
@@ -62,13 +39,26 @@ void Init()
 void Update(float deltaTime)
 {
 	EntitiesManager::GetInstance()->Update(deltaTime);
+	ImGui::Begin("Main!");
+	float f = 1.0f / deltaTime;
+	f = roundf(f * 100) * 0.01f;
+	std::string s = std::to_string(f);
+	std::string s2 = std::string(" fps");
+	ImGui::Text((s + s2).c_str());
+	ImGui::End();
+}
+
+void Shutdown()
+{
+	ImGui::SFML::Shutdown();
 }
 
 int main()
 {
 	auto window = sf::RenderWindow{{1280u, 720u}, "wahoo", sf::Style::Close | sf::Style::Titlebar};
-	window.setFramerateLimit(30);
+	window.setFramerateLimit(1000);
 	Init();
+	ImGui::SFML::Init(window);
 
 	sf::Font silver;
 	silver.loadFromFile("D:\\Cooding\\cmake-sfml-project\\fonts\\Silver.ttf");
@@ -79,6 +69,7 @@ int main()
 	text.setFont(silver);
 	text.setString("Ouah!!");
 	text.setPosition(200.0f, 200.0f);
+
 	while (window.isOpen())
 	{
 		for (auto event = sf::Event{}; window.pollEvent(event);)
@@ -87,40 +78,33 @@ int main()
 			{
 				window.close();
 			}
+			ImGui::SFML::ProcessEvent(window, event);
 		}
 
-		Update(deltaClock.restart().asSeconds());
+		auto delta = deltaClock.restart();
+		ImGui::SFML::Update(window, delta);
+		Update(delta.asSeconds());
+		// ImGui::Begin("Hello, world!");
+		// ImGui::Text("Some Text!");
+		// static bool showText = false;
+		// if (ImGui::Button("Look at this pretty button"))
+		// 	showText = !showText;
+		// if (showText)
+		// 	ImGui::Text("More Text!");
+		// ImGui::ShowDemoWindow();
+		// ImGui::End();
 
 		window.clear();
-		window.draw(text);
-
-		// sf::CircleShape shape(100.f);
-		// shape.setFillColor(sf::Color::Green);
-		// window.draw(shape);
-
 		for (int i = 0; i < EntitiesManager::GetInstance()->entities.size(); i++)
 		{
 			window.draw(EntitiesManager::GetInstance()->entities[i]->sprite_);
 		}
+		window.draw(text);
+		ImGui::SFML::Render(window);
 
 		window.display();
-		// std::cout << "Mario!\n";
 	}
-}
-
-void Render()
-{
-	EntitiesManager::GetInstance()->Draw();
-
-	// std::string str = "x: " + std::to_string(inputs.get_inputs().x) + "\n y: " + std::to_string(inputs.get_inputs().y);
-	// App::Print(100, 100, str.c_str());
-
-	// std::string str2 = "length: " + std::to_string(inputs.get_inputs().magnitude());
-	// App::Print(100, 60, str2.c_str());
-}
-
-void Shutdown()
-{
+	Shutdown();
 }
 
 /*
