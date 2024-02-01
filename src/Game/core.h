@@ -1,6 +1,6 @@
 #pragma once
-//#include "stdafx.h"
-// #include "core.h"
+// #include "stdafx.h"
+//  #include "core.h"
 #include <cmath>
 
 struct vec2
@@ -39,46 +39,46 @@ struct vec2
 	vec2 normalized() const
 	{
 		float mag = magnitude();
-		return { x / mag,y / mag };
+		return {x / mag, y / mag};
 	}
 
-	vec2 operator *(const float& f) const
+	vec2 operator*(const float &f) const
 	{
 		return multiply(f, *this);
 	}
 
-	vec2 multiply(const float& f, const vec2& v) const
+	vec2 multiply(const float &f, const vec2 &v) const
 	{
-		return { v.x * f, v.y * f };
+		return {v.x * f, v.y * f};
 	}
 
-	vec2 operator +(const vec2& v)
+	vec2 operator+(const vec2 &v)
 	{
 		return add(v, *this);
 	}
 
-	vec2 add(const vec2& v, const vec2& v2)
+	vec2 add(const vec2 &v, const vec2 &v2)
 	{
-		return vec2{ v.x + v2.x, v.y + v2.y };
+		return vec2{v.x + v2.x, v.y + v2.y};
 	}
 
-	vec2 operator -(const vec2& v)
+	vec2 operator-(const vec2 &v)
 	{
 		return subt(*this, v);
 	}
 
-	vec2 subt(const vec2& v, const vec2& v2)
+	vec2 subt(const vec2 &v, const vec2 &v2)
 	{
-		return vec2{ v.x - v2.x, v.y - v2.y };
+		return vec2{v.x - v2.x, v.y - v2.y};
 	}
 
-	float dist(const vec2& v, const vec2& v2)
+	float dist(const vec2 &v, const vec2 &v2)
 	{
 		return 100;
 	}
 };
 
-float dot(const vec2& a, const vec2& b);
+float dot(const vec2 &a, const vec2 &b);
 
-float clamp(const float& min, const float& max, const float& i);
-float clamp01(const float& i);
+float clamp(const float &min, const float &max, const float &i);
+float clamp01(const float &i);

@@ -6,6 +6,7 @@
 #include "EntitiesManager.h"
 #include "../imgui-sfml-2.6/imgui-1.90.1/imgui.h"
 #include "../imgui-sfml-2.6/imgui-SFML.h"
+#include <iostream>
 
 Player::Player() : fsm(*this)
 {
@@ -33,10 +34,24 @@ void Player::update(float delta)
 
 	Entity::update(delta);
 	ImGui::Begin("Player");
-	std::string s = "velocity.x = " + std::to_string(velocity_.x);
-	ImGui::Text(s.c_str());
-	std::string s2 = "velocity.y = " + std::to_string(velocity_.y);
-	ImGui::Text(s2.c_str());
+	std::string vel = "velocity.x = " + std::to_string(velocity_.x);
+	ImGui::Text(vel.c_str());
+	std::string vel2 = "velocity.y = " + std::to_string(velocity_.y);
+	ImGui::Text(vel2.c_str());
+
+	std::string pos = "Pos.x = " + std::to_string(Pos.x);
+	ImGui::Text(pos.c_str());
+	std::string pos2 = "Pos.y = " + std::to_string(Pos.y);
+	ImGui::Text(pos2.c_str());
+	ImGui::End();
+
+	ImGui::Begin("Test");
+	vec2 a = {0.0f, 1.0f};
+	vec2 b = {1.0f, 0.0f};
+	std::string s3 = "dot = " + std::to_string(dot(velocity_, a));
+	ImGui::Text(s3.c_str());
+	std::string s4 = "dot = " + std::to_string(dot(velocity_, b));
+	ImGui::Text(s4.c_str());
 	ImGui::End();
 }
 
@@ -104,12 +119,28 @@ void Player::resolve_collision(const Entity &entity)
 	if (abs(dir.x) > abs(dir.y))
 	{
 		dir2 = {dir.x, 0};
-		this->velocity_ = this->velocity_ + dir2.normalized() * this->velocity_.magnitude();
+		this->velocity_ = this->velocity_ + (dir2.normalized() * this->velocity_.magnitude()); // * dot(velocity_, dir2) * -1.0f);
+																							   // std::cout << "Velocity X = ";
+																							   // std::cout << std::to_string(this->velocity_.x);
+																							   // std::cout << "\n";
+																							   // std::cout << "Velocity Y = ";
+																							   // std::cout << std::to_string(this->velocity_.y);
+																							   // std::cout << "\n";
+																							   // if (this->velocity_.x == 0.0f)
+																							   // 	this->velocity_ = dir2.normalized();
 	}
 	else
 	{
 		dir2 = {0, dir.y};
-		this->velocity_ = this->velocity_ + dir2.normalized() * this->velocity_.magnitude();
+		this->velocity_ = this->velocity_ + (dir2.normalized() * this->velocity_.magnitude()); // * dot(velocity_, dir2) * -1.0f);
+																							   // std::cout << "Velocity X = ";
+																							   // std::cout << std::to_string(this->velocity_.x);
+																							   // std::cout << "\n";
+																							   // std::cout << "Velocity Y = ";
+																							   // std::cout << std::to_string(this->velocity_.y);
+																							   // std::cout << "\n";
+																							   // if (this->velocity_.y < 0.01f && this->velocity_.y > -0.01f)
+																							   // 	this->velocity_ = dir2.normalized();
 	}
 }
 
