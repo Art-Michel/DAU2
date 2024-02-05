@@ -119,28 +119,20 @@ void Player::resolve_collision(const Entity &entity)
 	if (abs(dir.x) > abs(dir.y))
 	{
 		dir2 = {dir.x, 0};
-		this->velocity_ = this->velocity_ + (dir2.normalized() * this->velocity_.magnitude()); // * dot(velocity_, dir2) * -1.0f);
-																							   // std::cout << "Velocity X = ";
-																							   // std::cout << std::to_string(this->velocity_.x);
-																							   // std::cout << "\n";
-																							   // std::cout << "Velocity Y = ";
-																							   // std::cout << std::to_string(this->velocity_.y);
-																							   // std::cout << "\n";
-																							   // if (this->velocity_.x == 0.0f)
-																							   // 	this->velocity_ = dir2.normalized();
+		this->velocity_.x = 0.0f;
+		float posToSnap = entity.Colbox.x + this->Colbox.x;
+		if (this->Pos.x < entity.Pos.x)
+			posToSnap *= -1;
+		this->Pos.x = entity.Pos.x + posToSnap;
 	}
 	else
 	{
 		dir2 = {0, dir.y};
-		this->velocity_ = this->velocity_ + (dir2.normalized() * this->velocity_.magnitude()); // * dot(velocity_, dir2) * -1.0f);
-																							   // std::cout << "Velocity X = ";
-																							   // std::cout << std::to_string(this->velocity_.x);
-																							   // std::cout << "\n";
-																							   // std::cout << "Velocity Y = ";
-																							   // std::cout << std::to_string(this->velocity_.y);
-																							   // std::cout << "\n";
-																							   // if (this->velocity_.y < 0.01f && this->velocity_.y > -0.01f)
-																							   // 	this->velocity_ = dir2.normalized();
+		this->velocity_.y = 0.0f;
+		float posToSnap = entity.Colbox.y + this->Colbox.y;
+		if (this->Pos.y < entity.Pos.y)
+			posToSnap *= -1;
+		this->Pos.y = entity.Pos.y + posToSnap;
 	}
 }
 
