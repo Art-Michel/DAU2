@@ -19,6 +19,8 @@ public:
             {
                 // on récupère le numéro de tuile courant
                 int tileNumber = tiles[i + j * width];
+                if (tileNumber == 0)
+                    continue;
 
                 // on en déduit sa position dans la texture du tileset
                 int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
