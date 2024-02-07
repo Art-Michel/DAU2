@@ -84,7 +84,7 @@ void Shutdown()
 int main()
 {
 	auto window = sf::RenderWindow{{32u * 8u, 24u * 8u}, "wahoo", sf::Style::Close | sf::Style::Titlebar};
-	window.setFramerateLimit(100);
+	window.setFramerateLimit(60);
 	window.setSize({32u * 40u, 24u * 40u});
 	Init();
 	ImGui::SFML::Init(window);
@@ -94,10 +94,11 @@ int main()
 	silver.setSmooth(false);
 	sf::Text text;
 
-	text.setCharacterSize(36);
+	text.setCharacterSize(18);
 	text.setFont(silver);
-	text.setString("Ouah!!");
-	text.setPosition(200.0f, 200.0f);
+	text.setString("Font by poppyworks\nBackgrounds by Enji\nTileset by Chimplement");
+	text.setScale(0.4, 0.4);
+	text.setPosition(0.0f, 164.0f);
 
 	TileMap map;
 	if (!map.load("D:\\Cooding\\cmake-sfml-project\\Sprites\\tiles2.png", sf::Vector2u(8, 8), level, 32, 24))
@@ -142,8 +143,8 @@ int main()
 		{
 			window.draw(EntitiesManager::GetInstance()->entities[i]->sprite_);
 		}
-		window.draw(text);
 		window.draw(map);
+		window.draw(text);
 		ImGui::SFML::Render(window);
 
 		window.display();

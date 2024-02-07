@@ -45,14 +45,14 @@ void Player::update(float delta)
 	ImGui::Text(pos2.c_str());
 	ImGui::End();
 
-	ImGui::Begin("Test");
-	vec2 a = {0.0f, 1.0f};
-	vec2 b = {1.0f, 0.0f};
-	std::string s3 = "dot = " + std::to_string(dot(velocity_, a));
-	ImGui::Text(s3.c_str());
-	std::string s4 = "dot = " + std::to_string(dot(velocity_, b));
-	ImGui::Text(s4.c_str());
-	ImGui::End();
+	// ImGui::Begin("Test");
+	// vec2 a = {0.0f, 1.0f};
+	// vec2 b = {1.0f, 0.0f};
+	// std::string s3 = "dot = " + std::to_string(dot(velocity_, a));
+	// ImGui::Text(s3.c_str());
+	// std::string s4 = "dot = " + std::to_string(dot(velocity_, b));
+	// ImGui::Text(s4.c_str());
+	// ImGui::End();
 }
 
 void Player::draw()
