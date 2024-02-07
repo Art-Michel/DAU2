@@ -11,11 +11,13 @@
 void Entity::init(const vec2 &pos, const char *path)
 {
 	Pos = pos;
-	texture_.loadFromFile(path);
-	sprite_ = sf::Sprite(texture_);
-	sprite_.setScale(1, 1);
-	texture_.setSmooth(false);
 	speed_ = 0;
+	if (texture_.loadFromFile(path))
+	{
+		sprite_ = sf::Sprite(texture_);
+		sprite_.setScale(1, 1);
+		texture_.setSmooth(false);
+	}
 }
 
 void Entity::update(const float delta)

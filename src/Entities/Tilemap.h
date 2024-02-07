@@ -52,7 +52,7 @@ public:
                 entity = new Entity();
                 float x = i * tileSize.x;
                 float y = j * tileSize.y;
-                entity->init(vec2(x, y), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
+                entity->init(vec2(x, y), "");
                 EntitiesManager::GetInstance()->entities.push_back(entity);
             }
 
