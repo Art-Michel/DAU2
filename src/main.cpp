@@ -46,20 +46,20 @@ const int level[] = {
 
 void Init()
 {
-	entity = Entity();
-	entity2 = Entity();
-	entity3 = Entity();
+	// entity = Entity();
+	// entity2 = Entity();
+	// entity3 = Entity();
 
 	player.init(vec2(32, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\char.png");
 	auto *ent = static_cast<Entity *>(&player);
 	EntitiesManager::GetInstance()->entities.push_back(ent);
 
-	entity.init(vec2(500, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
-	entity2.init(vec2(100, 100), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
-	entity3.init(vec2(628, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
-	EntitiesManager::GetInstance()->entities.push_back(&entity);
-	EntitiesManager::GetInstance()->entities.push_back(&entity2);
-	EntitiesManager::GetInstance()->entities.push_back(&entity3);
+	// entity.init(vec2(500, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
+	// entity2.init(vec2(100, 100), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
+	// entity3.init(vec2(628, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
+	// EntitiesManager::GetInstance()->entities.push_back(&entity);
+	// EntitiesManager::GetInstance()->entities.push_back(&entity2);
+	// EntitiesManager::GetInstance()->entities.push_back(&entity3);
 }
 
 void Update(float deltaTime)

@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include "EntitiesManager.h"
+#include "Entity.h"
 
 class TileMap : public sf::Drawable, public sf::Transformable
 {
@@ -44,6 +46,14 @@ public:
                 triangles[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
                 triangles[4].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
                 triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
+
+                // Instanciation de Entty
+                Entity entity;
+                entity = Entity();
+                float x = i * tileSize.x + tileSize.x * 0.5f;
+                float y = j * tileSize.y + tileSize.y * 0.5f;
+                entity.init(vec2(x, y), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
+                EntitiesManager::GetInstance()->entities.push_back(&entity);
             }
 
         return true;

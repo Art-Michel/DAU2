@@ -16,7 +16,7 @@ void Player::init(const vec2 &pos, const char *path)
 {
 	inputs = Inputs();
 	Entity::init(pos, path);
-	speed_ = 30.0f;
+	speed_ = 60.0f;
 
 	Colbox = {6, 7};
 
