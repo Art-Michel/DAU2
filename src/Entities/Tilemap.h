@@ -48,12 +48,12 @@ public:
                 triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
 
                 // Instanciation de Entty
-                Entity entity;
-                entity = Entity();
-                float x = i * tileSize.x + tileSize.x * 0.5f;
-                float y = j * tileSize.y + tileSize.y * 0.5f;
-                entity.init(vec2(x, y), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
-                EntitiesManager::GetInstance()->entities.push_back(&entity);
+                Entity *entity;
+                entity = new Entity();
+                float x = i * tileSize.x;
+                float y = j * tileSize.y;
+                entity->init(vec2(x, y), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
+                EntitiesManager::GetInstance()->entities.push_back(entity);
             }
 
         return true;
