@@ -7,6 +7,7 @@
 #include "Tilemap.h"
 #include "../imgui-sfml-2.6/imgui-1.90.1/imgui.h"
 #include "../imgui-sfml-2.6/imgui-SFML.h"
+#include "Background.h"
 
 sf::RenderWindow window;
 std::vector<sf::Text> texts;
@@ -65,6 +66,7 @@ void Init()
 void Update(float deltaTime)
 {
 	EntitiesManager::GetInstance()->Update(deltaTime);
+
 	ImGui::Begin("Main!");
 	float f = 1.0f / deltaTime;
 	f = roundf(f * 100) * 0.01f;
@@ -101,6 +103,15 @@ int main()
 	if (!map.load("D:\\Cooding\\cmake-sfml-project\\Sprites\\tiles2.png", sf::Vector2u(8, 8), level, 32, 24))
 		return -1;
 
+	Background bg;
+	bg.Init({0, 0}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_1.png", {0.2f, 0.3f});
+	Background bg2;
+	bg2.Init({0, 0}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_2.png", {0.5f, 0.6});
+	Background bg3;
+	bg3.Init({0, 0}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_3.png", {0.9f, 1.0f});
+	Background bg4;
+	bg4.Init({0, 0}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_4.png", {0.3f, 0.4f});
+
 	while (window.isOpen())
 	{
 		for (auto event = sf::Event{}; window.pollEvent(event);)
@@ -117,6 +128,16 @@ int main()
 		Update(delta.asSeconds());
 
 		window.clear();
+		bg.update(delta.asSeconds());
+		bg2.update(delta.asSeconds());
+		bg3.update(delta.asSeconds());
+		bg4.update(delta.asSeconds());
+
+		window.draw(bg.sprite_);
+		window.draw(bg2.sprite_);
+		window.draw(bg3.sprite_);
+		window.draw(bg4.sprite_);
+
 		for (int i = 0; i < EntitiesManager::GetInstance()->entities.size(); i++)
 		{
 			window.draw(EntitiesManager::GetInstance()->entities[i]->sprite_);
