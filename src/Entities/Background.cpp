@@ -9,6 +9,7 @@ void Background::Init(const vec2 &pos, const char *path, const vec2 &speed)
         sprite_ = sf::Sprite(texture_);
         sprite_.setScale(1, 1);
         texture_.setSmooth(false);
+        sprite_.setColor(sf::Color(255, 255, 255, 100));
     }
 }
 

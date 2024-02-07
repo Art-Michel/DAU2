@@ -73,6 +73,7 @@ void Update(float deltaTime)
 	std::string s = std::to_string(f);
 	std::string s2 = std::string(" fps");
 	ImGui::Text((s + s2).c_str());
+	ImGui::Text("Font: https://poppyworks.itch.io/silver\nBackground: https://enjl.itch.io/background-starry-space\nTileset: https://chimplement.itch.io/crater-caverns");
 	ImGui::End();
 }
 
@@ -98,7 +99,7 @@ int main()
 	text.setFont(silver);
 	text.setString("Font by poppyworks\nBackgrounds by Enji\nTileset by Chimplement");
 	text.setScale(0.4, 0.4);
-	text.setPosition(0.0f, 164.0f);
+	text.setPosition(2.0f, 164.0f);
 
 	TileMap map;
 	if (!map.load("D:\\Cooding\\cmake-sfml-project\\Sprites\\tiles2.png", sf::Vector2u(8, 8), level, 32, 24))
