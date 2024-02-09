@@ -45,24 +45,6 @@ const int level[] = {
 	5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 13, 5,
 	5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
 
-void Init()
-{
-	// entity = Entity();
-	// entity2 = Entity();
-	// entity3 = Entity();
-
-	player.init(vec2(32, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\char.png");
-	auto *ent = static_cast<Entity *>(&player);
-	EntitiesManager::GetInstance()->entities.push_back(ent);
-
-	// entity.init(vec2(500, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
-	// entity2.init(vec2(100, 100), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
-	// entity3.init(vec2(628, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\Square.png");
-	// EntitiesManager::GetInstance()->entities.push_back(&entity);
-	// EntitiesManager::GetInstance()->entities.push_back(&entity2);
-	// EntitiesManager::GetInstance()->entities.push_back(&entity3);
-}
-
 void Update(float deltaTime)
 {
 	EntitiesManager::GetInstance()->Update(deltaTime);
@@ -87,7 +69,6 @@ int main()
 	auto window = sf::RenderWindow{{32u * 8u, 24u * 8u}, "wahoo", sf::Style::Close | sf::Style::Titlebar};
 	window.setFramerateLimit(60);
 	window.setSize({32u * 40u, 24u * 40u});
-	Init();
 	ImGui::SFML::Init(window);
 
 	sf::Font silver;
@@ -100,6 +81,10 @@ int main()
 	text.setString("Font by poppyworks\nBackgrounds by Enji\nTileset by Chimplement");
 	text.setScale(0.4, 0.4);
 	text.setPosition(2.0f, 164.0f);
+
+	player.init(vec2(32, 32), "D:\\Cooding\\cmake-sfml-project\\Sprites\\char.png");
+	auto *ent = static_cast<Entity *>(&player);
+	EntitiesManager::GetInstance()->entities.push_back(ent);
 
 	TileMap map;
 	if (!map.load("D:\\Cooding\\cmake-sfml-project\\Sprites\\tiles2.png", sf::Vector2u(8, 8), level, 32, 24))

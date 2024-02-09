@@ -18,7 +18,7 @@ void Player::init(const vec2 &pos, const char *path)
 	Entity::init(pos, path);
 	speed_ = 60.0f;
 
-	Colbox = {6, 7};
+	Colbox = {7, 7};
 
 	// sf::Font silver;
 	// silver.loadFromFile("src/fonts/silver.ttf");
