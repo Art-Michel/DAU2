@@ -88,6 +88,10 @@ void Player::check_collisions()
 	std::sort(e.begin(), e.end(), [this](const Entity *a, const Entity *b)
 			  { return a->Dist_to_player() < b->Dist_to_player(); });
 
+	ImGui::Begin("Player");
+	std::string s;
+	s = "Colliding = ";
+	std::string s1 = "False";
 	for (int i = 0; i < e.size(); i++)
 	{
 		if (e[i] == this)
@@ -96,8 +100,11 @@ void Player::check_collisions()
 		{
 			resolve_collision(*e[i]);
 			i--;
+			s1 = "True";
 		}
 	}
+	ImGui::Text((s + s1).c_str());
+	ImGui::End();
 }
 
 bool Player::collided_with(const Entity &entity)
