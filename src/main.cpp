@@ -45,18 +45,28 @@ const int level[] = {
 	5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 13, 5,
 	5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
 
-void Update(float deltaTime)
+void instBgs(float x, float y, std::vector<Background *> *bgs)
 {
-	EntitiesManager::GetInstance()->Update(deltaTime);
-
-	ImGui::Begin("Main!");
-	float f = 1.0f / deltaTime;
-	f = roundf(f * 100) * 0.01f;
-	std::string s = std::to_string(f);
-	std::string s2 = std::string(" fps");
-	ImGui::Text((s + s2).c_str());
-	ImGui::Text("Font: https://poppyworks.itch.io/silver\nBackground: https://enjl.itch.io/background-starry-space\nTileset: https://chimplement.itch.io/crater-caverns");
-	ImGui::End();
+	Background *bg;
+	bg = new Background();
+	// bg->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_1.png", {100, 100});
+	bg->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_1.png", {0.05f, 0.1f});
+	bgs->push_back(bg);
+	Background *bg2;
+	bg2 = new Background();
+	// bg2->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_2.png", {100, 100});
+	bg2->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_2.png", {0.2f, 0.4});
+	bgs->push_back(bg2);
+	Background *bg3;
+	bg3 = new Background();
+	// bg3->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_3.png", {100, 100});
+	bg3->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_3.png", {0.4f, 0.8f});
+	bgs->push_back(bg3);
+	Background *bg4;
+	bg4 = new Background();
+	// bg4->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_4.png", {100, 100});
+	bg4->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_4.png", {0.1f, 0.2f});
+	bgs->push_back(bg4);
 }
 
 void Shutdown()
@@ -66,9 +76,9 @@ void Shutdown()
 
 int main()
 {
-	auto window = sf::RenderWindow{{32u * 8u, 24u * 8u}, "wahoo", sf::Style::Close | sf::Style::Titlebar};
+	auto window = sf::RenderWindow{{256u, 192u}, "DAU!", sf::Style::Close | sf::Style::Titlebar};
 	window.setFramerateLimit(60);
-	window.setSize({32u * 40u, 24u * 40u});
+	window.setSize({1280u, 960u});
 	ImGui::SFML::Init(window);
 
 	sf::Font silver;
@@ -90,14 +100,11 @@ int main()
 	if (!map.load("D:\\Cooding\\cmake-sfml-project\\Sprites\\tiles2.png", sf::Vector2u(8, 8), level, 32, 24))
 		return -1;
 
-	Background bg;
-	bg.Init({0, 0}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_1.png", {0.2f, 0.3f});
-	Background bg2;
-	bg2.Init({0, 0}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_2.png", {0.5f, 0.6});
-	Background bg3;
-	bg3.Init({0, 0}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_3.png", {0.9f, 1.0f});
-	Background bg4;
-	bg4.Init({0, 0}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_4.png", {0.3f, 0.4f});
+	std::vector<Background *> backgrounds;
+	instBgs(-256.0f, -192.0, &backgrounds);
+	instBgs(0, 0, &backgrounds);
+	instBgs(-256.0f, 0, &backgrounds);
+	instBgs(0, -192.0, &backgrounds);
 
 	while (window.isOpen())
 	{
@@ -112,27 +119,37 @@ int main()
 
 		auto delta = deltaClock.restart();
 		ImGui::SFML::Update(window, delta);
-		Update(delta.asSeconds());
+
+		ImGui::Begin("Main!");
+		float f = 1.0f / delta.asSeconds();
+		f = roundf(f * 100) * 0.01f;
+		std::string s = std::to_string(f);
+		std::string s2 = std::string(" fps");
+		ImGui::Text((s + s2).c_str());
+		ImGui::Text("Font: https://poppyworks.itch.io/silver\nBackground: https://enjl.itch.io/background-starry-space\nTileset: https://chimplement.itch.io/crater-caverns");
+		ImGui::End();
+
+		// Update Entities
+		EntitiesManager::GetInstance()->Update(delta.asSeconds());
+		// Update Backgrounds
+		for (size_t i = 0; i < backgrounds.size(); i++)
+			backgrounds[i]->update(delta.asSeconds());
 
 		window.clear();
-		bg.update(delta.asSeconds());
-		bg2.update(delta.asSeconds());
-		bg3.update(delta.asSeconds());
-		bg4.update(delta.asSeconds());
-
-		window.draw(bg.sprite_);
-		window.draw(bg2.sprite_);
-		window.draw(bg3.sprite_);
-		window.draw(bg4.sprite_);
-
+		// Draw Backgrounds
+		for (size_t i = 0; i < backgrounds.size(); i++)
+			window.draw(backgrounds[i]->sprite_);
+		// Draw Sprites
 		for (int i = 0; i < EntitiesManager::GetInstance()->entities.size(); i++)
-		{
 			window.draw(EntitiesManager::GetInstance()->entities[i]->sprite_);
-		}
-		window.draw(map);
-		window.draw(text);
-		ImGui::SFML::Render(window);
 
+		// Draw map
+		window.draw(map);
+		// Draw text
+		window.draw(text);
+
+		// Display window
+		ImGui::SFML::Render(window);
 		window.display();
 	}
 	Shutdown();
