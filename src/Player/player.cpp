@@ -16,7 +16,7 @@ void Player::init(const vec2 &pos, const char *path)
 {
 	inputs = Inputs();
 	Entity::init(pos, path);
-	speed_ = 60.0f;
+	speed_ = 120.0f;
 
 	Colbox = {7, 7};
 
@@ -27,6 +27,7 @@ void Player::init(const vec2 &pos, const char *path)
 void Player::update(float delta)
 {
 	inputs.register_inputs();
+
 	velocity_ = inputs.get_inputs();
 
 	colliding = false;
@@ -44,15 +45,6 @@ void Player::update(float delta)
 	std::string pos2 = "Pos.y = " + std::to_string(Pos.y);
 	ImGui::Text(pos2.c_str());
 	ImGui::End();
-
-	// ImGui::Begin("Test");
-	// vec2 a = {0.0f, 1.0f};
-	// vec2 b = {1.0f, 0.0f};
-	// std::string s3 = "dot = " + std::to_string(dot(velocity_, a));
-	// ImGui::Text(s3.c_str());
-	// std::string s4 = "dot = " + std::to_string(dot(velocity_, b));
-	// ImGui::Text(s4.c_str());
-	// ImGui::End();
 }
 
 void Player::draw()
@@ -107,6 +99,10 @@ void Player::check_collisions()
 	ImGui::End();
 }
 
+void Player::apply_gravity(float delta)
+{
+}
+
 bool Player::collided_with(const Entity &entity)
 {
 	bool yesh =
@@ -141,8 +137,4 @@ void Player::resolve_collision(const Entity &entity)
 			posToSnap *= -1;
 		this->Pos.y = entity.Pos.y + posToSnap;
 	}
-}
-
-void Player::AddGravity(float delta)
-{
 }

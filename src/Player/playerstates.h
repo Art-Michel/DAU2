@@ -1,21 +1,21 @@
 #pragma once
-//#include "stdafx.h"
+// #include "stdafx.h"
 #include "state.h"
 
 class plst_grounded : public state
 {
 public:
-	plst_grounded(Player& pl) :state(pl) {}
+	plst_grounded(Player &pl) : state(pl) {}
 	void Begin();
-	void Update();
+	void Update(float delta);
 	void End();
 };
 
 class plst_airborne : public state
 {
 public:
-	plst_airborne(Player& pl) :state(pl){}
+	plst_airborne(Player &pl) : state(pl) {}
 	void Begin();
-	void Update();
+	void Update(float delta);
 	void End();
 };

@@ -20,10 +20,10 @@ public:
 	void init(const vec2 &pos, const char *path) override;
 	void update(float delta) override;
 	void draw() override;
+	void apply_gravity(float delta);
 
 private:
 	void check_collisions();
 	bool collided_with(const Entity &entity);
 	void resolve_collision(const Entity &entity);
-	void AddGravity(float delta);
 };

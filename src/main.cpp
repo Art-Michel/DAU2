@@ -50,22 +50,22 @@ void instBgs(float x, float y, std::vector<Background *> *bgs)
 	Background *bg;
 	bg = new Background();
 	// bg->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_1.png", {100, 100});
-	bg->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_1.png", {0.05f, 0.1f});
+	bg->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_1.png", {0.1f, 0.2f});
 	bgs->push_back(bg);
 	Background *bg2;
 	bg2 = new Background();
 	// bg2->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_2.png", {100, 100});
-	bg2->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_2.png", {0.2f, 0.4});
+	bg2->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_2.png", {1.0f, 2.0f});
 	bgs->push_back(bg2);
 	Background *bg3;
 	bg3 = new Background();
 	// bg3->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_3.png", {100, 100});
-	bg3->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_3.png", {0.4f, 0.8f});
+	bg3->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_3.png", {1.5f, 3.0f});
 	bgs->push_back(bg3);
 	Background *bg4;
 	bg4 = new Background();
 	// bg4->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_4.png", {100, 100});
-	bg4->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_4.png", {0.1f, 0.2f});
+	bg4->Init({x, y}, "D:\\Cooding\\cmake-sfml-project\\Sprites\\Enjl-Starry Space Background\\background_4.png", {0.2f, 0.4f});
 	bgs->push_back(bg4);
 }
 

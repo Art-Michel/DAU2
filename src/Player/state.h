@@ -1,5 +1,5 @@
 #pragma once
-//#include "stdafx.h"
+// #include "stdafx.h"
 
 struct state_list
 {
@@ -11,19 +11,17 @@ class Player;
 class state
 {
 public:
-	Player& player;
+	Player &myplayer;
 	int Name;
 
 private:
-
 public:
-	state(Player& plpt) :player(plpt) {}
+	state(Player &plpt) : myplayer(plpt) {}
 
-	virtual void init(int name, Player* plpt);
+	virtual void init(int name, Player *plpt);
 	virtual ~state() = default;
 
 	virtual void Begin() {}
 	virtual void Update() {}
 	virtual void End() {}
 };
-

@@ -1,7 +1,8 @@
-//#include "stdafx.h"
+// #include "stdafx.h"
 #include "state.h"
 
-void state::init(int name, Player* plpt)
+void state::init(int name, Player *plpt)
 {
 	Name = name;
+	// myplayer = &plpt;
 }
